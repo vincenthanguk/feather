@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './financialRes.css';
+import './Income.css';
 
-class FinancialRes extends Component {
+class Income extends Component {
   render() {
     return (
-      <div className="FinancialRes">
-        <h1>Financial Responsibilities 💵</h1>
+      <div className="Income">
+        <h1>Annual Gross Income 💵</h1>
         <form>
           <div className="checkbox">
             <label htmlFor="child">Child</label>
@@ -34,4 +34,4 @@ class FinancialRes extends Component {
   }
 }
 
-export default FinancialRes;
+export default Income;
