@@ -8,21 +8,15 @@ class EmploymentStatus extends Component {
       <div className="EmploymentStatus">
         <h1>Employment Status</h1>
         <form>
-          <div className="checkbox">
+          <div className="radio">
             <label htmlFor="student">student</label>
-            <input name="student" type="checkbox" value="asd" />
-          </div>
-          <div className="checkbox">
+            <input name="employmentStatus" type="radio" value="student" />
             <label htmlFor="semployed">employed</label>
-            <input name="employed" type="checkbox" value="asd" />
-          </div>
-          <div className="checkbox">
+            <input name="employmentStatus" type="radio" value="employed" />
             <label htmlFor="selfemployed">selfemployed</label>
-            <input name="selfemployed" type="checkbox" value="asd" />
-          </div>
-          <div className="checkbox">
+            <input name="employmentStatus" type="radio" value="selfemployed" />
             <label htmlFor="unemployed">unemployed</label>
-            <input name="unemployed" type="checkbox" value="asd" />
+            <input name="employmentStatus" type="radio" value="unemployed" />
           </div>
           <Link to="/questionnaire/income">
             <button>Next</button>

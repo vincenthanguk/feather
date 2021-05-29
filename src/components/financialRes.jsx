@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './financialRes.css';
+import './FinancialRes.css';
 
 class FinancialRes extends Component {
   render() {

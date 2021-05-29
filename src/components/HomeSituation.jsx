@@ -9,13 +9,12 @@ class HomeSituation extends Component {
         <h1>Home Situation</h1>
         <span>Do you own or rent the place where you live? 🏡</span>
         <form>
-          <div className="checkbox">
+          <div className="radio">
             <label htmlFor="own">own</label>
-            <input name="own" type="checkbox" value="asd" />
-          </div>
-          <div className="checkbox">
+            <input name="homeType" type="radio" value="own" />
+
             <label htmlFor="rent">rent</label>
-            <input name="rent" type="checkbox" value="asd" />
+            <input name="homeType" type="radio" value="rent" />
           </div>
           <Link to="/questionnaire/employment-status">
             <button>Next</button>
