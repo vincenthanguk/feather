@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class YearOfBirth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      value: '',
     };
   }
   handleChange = (evt) => {
@@ -13,7 +14,7 @@ class YearOfBirth extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(this.state.value);
-    this.setState({ value: "" });
+    this.setState({ value: '' });
   };
 
   render() {
@@ -26,7 +27,9 @@ class YearOfBirth extends Component {
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <button>Next</button>
+          <Link to="/questionnaire/financial-responsibilities">
+            <button>Next</button>
+          </Link>
         </form>
       </div>
     );
