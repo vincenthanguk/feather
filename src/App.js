@@ -12,18 +12,20 @@ import './App.css';
 
 function App() {
   const initialQuestionnaire = {
-    yearOfBirth: null,
-    financialRes: null,
+    yearOfBirth: '',
+    financialRes: [
+      { value: 'child', isChecked: true },
+      { value: 'spouse', isChecked: false },
+    ],
+    homeSituation: '',
+    employmentStatus: '',
+    income: '',
   };
 
   const [questionnaire, setQuestionnaire] = useState(initialQuestionnaire);
 
-  const setYearOfBirth = (year) => {
-    setQuestionnaire({ ...questionnaire, yearOfBirth: year });
-  };
-
-  const setFinancialRes = (res) => {
-    setQuestionnaire({ ...questionnaire, financialRes: res });
+  const setQuestionnaireItem = (item, value) => {
+    setQuestionnaire({ ...questionnaire, [item]: value });
   };
 
   return (
@@ -34,22 +36,21 @@ function App() {
           <Route exact path="/" component={Questionnaire} />
           <Route exact path="/questionnaire" component={Questionnaire} />
           <Route exact path="/questionnaire/year-of-birth">
-            <YearOfBirth handleSubmit={setYearOfBirth} />
+            <YearOfBirth handleSubmit={setQuestionnaireItem} />
           </Route>
           <Route exact path="/questionnaire/financial-responsibilities">
-            <FinancialRes handleSubmit={setFinancialRes} />
+            <FinancialRes handleSubmit={setQuestionnaireItem} />
           </Route>
-          <Route
-            exact
-            path="/questionnaire/home-situation"
-            component={HomeSituation}
-          />
-          <Route
-            exact
-            path="/questionnaire/employment-status"
-            component={EmploymentStatus}
-          />
-          <Route exact path="/questionnaire/income" component={Income} />
+          <Route exact path="/questionnaire/home-situation">
+            <HomeSituation handleSubmit={setQuestionnaireItem} />
+          </Route>
+          <Route exact path="/questionnaire/employment-status">
+            <EmploymentStatus handleSubmit={setQuestionnaireItem} />
+          </Route>
+          <Route exact path="/questionnaire/income">
+            <Income handleSubmit={setQuestionnaireItem} />
+          </Route>
+
           <Route exact path="/recommendations">
             <Recommendations results={questionnaire} />
           </Route>

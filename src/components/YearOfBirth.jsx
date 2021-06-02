@@ -3,7 +3,7 @@ import useInputState from '../hooks/useInputState';
 import { Link } from 'react-router-dom';
 
 function YearOfBirth({ handleSubmit }) {
-  const [value, handleChange, reset] = useInputState('');
+  const [value, handleChange] = useInputState('');
 
   return (
     <div className="YearOfBirth">
@@ -11,7 +11,9 @@ function YearOfBirth({ handleSubmit }) {
       <form onSubmit={() => handleSubmit(value)}>
         <input type="text" value={value} onChange={handleChange} />
         <Link to="/questionnaire/financial-responsibilities">
-          <button onClick={() => handleSubmit(value)}>Next</button>
+          <button onClick={() => handleSubmit('yearOfBirth', value)}>
+            Next
+          </button>
         </Link>
       </form>
     </div>

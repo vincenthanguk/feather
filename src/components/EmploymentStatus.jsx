@@ -1,30 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './EmploymentStatus.css';
+import './HomeSituation.css';
 
-class EmploymentStatus extends Component {
-  render() {
+function EmploymentStatus({ handleSubmit }) {
+  const radioItems = ['student', 'employed', 'selfemployed', 'unemployed'];
+
+  const [value, setValue] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const radioButtons = radioItems.map((item) => {
     return (
-      <div className="EmploymentStatus">
-        <h1>Employment Status</h1>
-        <form>
-          <div className="radio">
-            <label htmlFor="student">student</label>
-            <input name="employmentStatus" type="radio" value="student" />
-            <label htmlFor="semployed">employed</label>
-            <input name="employmentStatus" type="radio" value="employed" />
-            <label htmlFor="selfemployed">selfemployed</label>
-            <input name="employmentStatus" type="radio" value="selfemployed" />
-            <label htmlFor="unemployed">unemployed</label>
-            <input name="employmentStatus" type="radio" value="unemployed" />
-          </div>
-          <Link to="/questionnaire/income">
-            <button>Next</button>
-          </Link>
-        </form>
+      <div key={item} className="radiobuttons" onChange={handleChange}>
+        <label htmlFor={item}>{item}</label>
+        <input name="employmentStatus" value={item} type="radio" />
       </div>
     );
-  }
+  });
+
+  return (
+    <div className="EmploymentStatus">
+      <h1>Employment Status</h1>
+      <form onSubmit={() => handleSubmit('employmentStatus', value)}>
+        {radioButtons}
+        <Link to="/questionnaire/income">
+          <button onClick={() => handleSubmit('employmentStatus', value)}>
+            Next
+          </button>
+        </Link>
+      </form>
+    </div>
+  );
 }
 
 export default EmploymentStatus;

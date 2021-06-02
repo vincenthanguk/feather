@@ -48,11 +48,13 @@ function FinancialRes({ handleSubmit }) {
   return (
     <div className="FinancialRes">
       <h1>Financial Responsibilities 💵</h1>
-      <form onSubmit={() => handleSubmit(value)}>
+      <form onSubmit={() => handleSubmit('financialRes', value)}>
         {checkBoxes}
         <span>No obligations</span>
         <Link to="/questionnaire/home-situation">
-          <button onClick={() => handleSubmit(value)}>Next</button>
+          <button onClick={() => handleSubmit('financialRes', value)}>
+            Next
+          </button>
         </Link>
       </form>
     </div>
