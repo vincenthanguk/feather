@@ -55,7 +55,12 @@ function Income({ handleSubmit }) {
         </div>
 
         <Link to="/recommendations">
-          <button onClick={() => handleSubmit('income', income)}>Next</button>
+          <button
+            onClick={() => handleSubmit('income', income)}
+            disabled={income === '' ? true : false}
+          >
+            Next
+          </button>
         </Link>
       </form>
     </div>

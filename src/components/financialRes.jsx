@@ -23,6 +23,7 @@ function FinancialRes({ handleSubmit }) {
   ];
 
   const [value, setValue] = useState(checkboxItems);
+  const [buttonStatus, setButtonStatus] = useState(true);
 
   const handleChange = (e) => {
     const item = e.target.name;
@@ -32,6 +33,7 @@ function FinancialRes({ handleSubmit }) {
       return i;
     });
     setValue(newState);
+    setButtonStatus(() => !disableButton());
   };
 
   const checkBoxes = value.map((item) => {
@@ -45,14 +47,28 @@ function FinancialRes({ handleSubmit }) {
     );
   });
 
+  const disableButton = () => {
+    // dynamically disable button when nothing is checked
+    let result = false;
+    value.forEach((item) => {
+      if (item.isChecked === true) result = true;
+    });
+    return result;
+  };
+
   return (
     <div className="FinancialRes">
       <h1>Financial Responsibilities 💵</h1>
       <form onSubmit={() => handleSubmit('financialRes', value)}>
         {checkBoxes}
-        <span>No obligations</span>
         <Link to="/questionnaire/home-situation">
           <button onClick={() => handleSubmit('financialRes', value)}>
+            No obligations
+          </button>
+          <button
+            onClick={() => handleSubmit('financialRes', value)}
+            disabled={buttonStatus}
+          >
             Next
           </button>
         </Link>

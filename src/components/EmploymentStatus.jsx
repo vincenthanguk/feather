@@ -26,7 +26,10 @@ function EmploymentStatus({ handleSubmit }) {
       <form onSubmit={() => handleSubmit('employmentStatus', value)}>
         {radioButtons}
         <Link to="/questionnaire/income">
-          <button onClick={() => handleSubmit('employmentStatus', value)}>
+          <button
+            onClick={() => handleSubmit('employmentStatus', value)}
+            disabled={value === '' ? true : false}
+          >
             Next
           </button>
         </Link>

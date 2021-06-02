@@ -7,6 +7,7 @@ import HomeSituation from './components/HomeSituation';
 import EmploymentStatus from './components/EmploymentStatus';
 import Income from './components/Income';
 import Recommendations from './components/Recommendations';
+import Submit from './components/Submit';
 
 import './App.css';
 
@@ -24,6 +25,15 @@ function App() {
 
   const [questionnaire, setQuestionnaire] = useState(initialQuestionnaire);
 
+  const setYearOfBirth = (item, value) => {
+    // need to add input validation
+    if (value === '') {
+      alert('Cannot be empty');
+      return false;
+    }
+    setQuestionnaire({ ...questionnaire, [item]: value });
+  };
+
   const setQuestionnaireItem = (item, value) => {
     setQuestionnaire({ ...questionnaire, [item]: value });
   };
@@ -36,7 +46,7 @@ function App() {
           <Route exact path="/" component={Questionnaire} />
           <Route exact path="/questionnaire" component={Questionnaire} />
           <Route exact path="/questionnaire/year-of-birth">
-            <YearOfBirth handleSubmit={setQuestionnaireItem} />
+            <YearOfBirth handleSubmit={setYearOfBirth} />
           </Route>
           <Route exact path="/questionnaire/financial-responsibilities">
             <FinancialRes handleSubmit={setQuestionnaireItem} />
@@ -54,6 +64,7 @@ function App() {
           <Route exact path="/recommendations">
             <Recommendations results={questionnaire} />
           </Route>
+          <Route exact path="/submit" component={Submit} />
         </Switch>
       </div>
     </div>

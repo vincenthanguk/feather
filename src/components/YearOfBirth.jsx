@@ -9,9 +9,19 @@ function YearOfBirth({ handleSubmit }) {
     <div className="YearOfBirth">
       <h1>What's your birth year? 🐣</h1>
       <form onSubmit={() => handleSubmit(value)}>
-        <input type="text" value={value} onChange={handleChange} />
+        <input
+          type="number"
+          min="1"
+          step="1"
+          value={value}
+          onChange={handleChange}
+          autoFocus
+        />
         <Link to="/questionnaire/financial-responsibilities">
-          <button onClick={() => handleSubmit('yearOfBirth', value)}>
+          <button
+            onClick={() => handleSubmit('yearOfBirth', value)}
+            disabled={value === '' ? true : false}
+          >
             Next
           </button>
         </Link>
