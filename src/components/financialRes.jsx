@@ -23,6 +23,8 @@ function FinancialRes({ handleSubmit }) {
   ];
 
   const [value, setValue] = useState(checkboxItems);
+
+  // state for disabling button
   const [buttonStatus, setButtonStatus] = useState(true);
 
   const handleChange = (e) => {
@@ -38,12 +40,12 @@ function FinancialRes({ handleSubmit }) {
 
   const checkBoxes = value.map((item) => {
     return (
-      <div key={item.value} className="checkbox">
+      <li key={item.value} className="checkbox">
         <label htmlFor={item.value}>
           {`${item.value[0].toUpperCase()}${item.value.slice(1)}`}
         </label>
         <input name={item.value} type="checkbox" onChange={handleChange} />
-      </div>
+      </li>
     );
   });
 
@@ -60,17 +62,19 @@ function FinancialRes({ handleSubmit }) {
     <div className="FinancialRes">
       <h1>Financial Responsibilities 💵</h1>
       <form onSubmit={() => handleSubmit('financialRes', value)}>
-        {checkBoxes}
+        <ul>{checkBoxes}</ul>
         <Link to="/questionnaire/home-situation">
-          <button onClick={() => handleSubmit('financialRes', value)}>
+          <span onClick={() => handleSubmit('financialRes', value)}>
             No obligations
-          </button>
-          <button
-            onClick={() => handleSubmit('financialRes', value)}
-            disabled={buttonStatus}
-          >
-            Next
-          </button>
+          </span>
+          <div>
+            <button
+              onClick={() => handleSubmit('financialRes', value)}
+              disabled={buttonStatus}
+            >
+              Next
+            </button>
+          </div>
         </Link>
       </form>
     </div>

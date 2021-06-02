@@ -17,14 +17,16 @@ function YearOfBirth({ handleSubmit }) {
           onChange={handleChange}
           autoFocus
         />
-        <Link to="/questionnaire/financial-responsibilities">
-          <button
-            onClick={() => handleSubmit('yearOfBirth', value)}
-            disabled={value === '' ? true : false}
-          >
-            Next
-          </button>
-        </Link>
+        <div>
+          <Link to="/questionnaire/financial-responsibilities">
+            <button
+              onClick={() => handleSubmit('yearOfBirth', value)}
+              disabled={value === '' ? true : false}
+            >
+              Next
+            </button>
+          </Link>
+        </div>
       </form>
     </div>
   );

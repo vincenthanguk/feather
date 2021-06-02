@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Questionnaire from './components/Questionnaire';
 import { Route, Switch } from 'react-router-dom';
 import YearOfBirth from './components/YearOfBirth';
@@ -15,7 +15,7 @@ function App() {
   const initialQuestionnaire = {
     yearOfBirth: '',
     financialRes: [
-      { value: 'child', isChecked: true },
+      { value: 'child', isChecked: false },
       { value: 'spouse', isChecked: false },
     ],
     homeSituation: '',
@@ -23,7 +23,17 @@ function App() {
     income: '',
   };
 
-  const [questionnaire, setQuestionnaire] = useState(initialQuestionnaire);
+  // check if state exists in localStorage, otherwise use initialQuestionnaire
+  const [questionnaire, setQuestionnaire] = useState(() => {
+    let val = JSON.parse(window.localStorage.getItem('questionnaire'));
+    if (!val) val = initialQuestionnaire;
+    return val;
+  });
+
+  // update localstorage when questionnaire state changes
+  useEffect(() => {
+    window.localStorage.setItem('questionnaire', JSON.stringify(questionnaire));
+  }, [questionnaire]);
 
   const setYearOfBirth = (item, value) => {
     // need to add input validation
