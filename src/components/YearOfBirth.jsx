@@ -1,39 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import useInputState from '../hooks/useInputState';
 import { Link } from 'react-router-dom';
 
-class YearOfBirth extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    };
-  }
-  handleChange = (evt) => {
-    this.setState({ value: evt.target.value });
-  };
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-    console.log(this.state.value);
-    this.setState({ value: '' });
-  };
+function YearOfBirth({ handleSubmit }) {
+  const [value, handleChange, reset] = useInputState('');
 
-  render() {
-    return (
-      <div className="YearOfBirth">
-        <h1>What's your birth year? 🐣</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <Link to="/questionnaire/financial-responsibilities">
-            <button>Next</button>
-          </Link>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="YearOfBirth">
+      <h1>What's your birth year? 🐣</h1>
+      <form onSubmit={() => handleSubmit(value)}>
+        <input type="text" value={value} onChange={handleChange} />
+        <Link to="/questionnaire/financial-responsibilities">
+          <button onClick={() => handleSubmit(value)}>Next</button>
+        </Link>
+      </form>
+    </div>
+  );
 }
 
 export default YearOfBirth;
