@@ -39,6 +39,34 @@ input {
   border: 1px solid rgb(185, 184, 184);
 }
 
-li {
+input[type='checkbox'] {
+  height: 20px;
+  width: 20px;
+}
+input[type='radio'] {
+  height: 20px;
+  width: 20px;
+}
+
+ul {
+  margin-left: 35vw;
+  margin-right: 35vw;
+  padding: 0;
   list-style: none;
+}
+
+.recs {
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+li {
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+h2 {
+  font-size: 1.3rem;
 }

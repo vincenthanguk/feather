@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './HomeSituation.css';
 
 function Income({ handleSubmit }) {
   const radioItems = [
@@ -38,10 +37,10 @@ function Income({ handleSubmit }) {
 
   const radioButtons = radioItems.map((item) => {
     return (
-      <div key={item.value} className="radio">
+      <li key={item.value} className="radio">
         <label htmlFor={item.value}>{item.label}</label>
         <input name="grossIncome" type="radio" value={item.value} />
-      </div>
+      </li>
     );
   });
 
@@ -51,7 +50,7 @@ function Income({ handleSubmit }) {
 
       <form onSubmit={() => handleSubmit('income', income)}>
         <div className="income" onChange={handleChange}>
-          {radioButtons}
+          <ul>{radioButtons}</ul>
         </div>
 
         <Link to="/recommendations">

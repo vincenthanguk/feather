@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './HomeSituation.css';
 
 function EmploymentStatus({ handleSubmit }) {
   const radioItems = ['student', 'employed', 'selfemployed', 'unemployed'];
@@ -13,10 +12,10 @@ function EmploymentStatus({ handleSubmit }) {
 
   const radioButtons = radioItems.map((item) => {
     return (
-      <div key={item} className="radiobuttons" onChange={handleChange}>
+      <li key={item} className="radiobuttons" onChange={handleChange}>
         <label htmlFor={item}>{item}</label>
         <input name="employmentStatus" value={item} type="radio" />
-      </div>
+      </li>
     );
   });
 
@@ -24,7 +23,7 @@ function EmploymentStatus({ handleSubmit }) {
     <div className="EmploymentStatus">
       <h1>Employment Status</h1>
       <form onSubmit={() => handleSubmit('employmentStatus', value)}>
-        {radioButtons}
+        <ul>{radioButtons}</ul>
         <Link to="/questionnaire/income">
           <button
             onClick={() => handleSubmit('employmentStatus', value)}

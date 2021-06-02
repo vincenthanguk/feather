@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './FinancialRes.css';
 
 function FinancialRes({ handleSubmit }) {
   const checkboxItems = [

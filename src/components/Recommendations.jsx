@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Recommendations.css';
-
 function Recommendations({ results }) {
   const finRes = results.financialRes.map((item) => {
     return item.isChecked && <div>{item.value}</div>;
@@ -11,21 +9,36 @@ function Recommendations({ results }) {
   return (
     <div className="Recommendations">
       <h1>Recommendations</h1>
-      <h2>Questionnaire Results:</h2>
-      <h3>Year of birth: {results.yearOfBirth}</h3>
-      <h3>Financial Responsibilities:</h3>
-      {finRes && 'none'}
-      <h3>Home Situation: {results.homeSituation}</h3>
-      <h3>Employmeny Status: {results.employmentStatus}</h3>
-
-      <h3>Income: {results.income}</h3>
-
+      Questionnaire Results:
+      <ul className="recs">
+        <li>
+          <span>Year of birth:</span> {results.yearOfBirth}
+        </li>
+        <li>
+          <span>Financial Responsibilities:</span>
+          {finRes && 'none'}
+        </li>
+        <li>
+          <span>Home Situation:</span>
+          {results.homeSituation}
+        </li>
+        <li>
+          <span>Employmeny Status:</span>
+          {results.employmentStatus}
+        </li>
+        <li>
+          <span>Income:</span>
+          {results.income}
+        </li>
+      </ul>
       <Link exact to="/questionnaire/year-of-birth">
         <button>Back to Questionnaire (edit)</button>
       </Link>
-      <Link exact to="/submit">
-        <button>Submit</button>
-      </Link>
+      <div>
+        <Link exact to="/submit">
+          <button>Submit</button>
+        </Link>
+      </div>
     </div>
   );
 }
