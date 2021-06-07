@@ -10,27 +10,30 @@ function Recommendations({ results }) {
     <div className="Recommendations">
       <h1>Recommendations</h1>
       Questionnaire Results:
-      <ul className="recs">
-        <li>
-          <span>Year of birth:</span> {results.yearOfBirth}
-        </li>
-        <li>
-          <span>Financial Responsibilities:</span>
-          {finRes && 'none'}
-        </li>
-        <li>
-          <span>Home Situation:</span>
-          {results.homeSituation}
-        </li>
-        <li>
-          <span>Employmeny Status:</span>
-          {results.employmentStatus}
-        </li>
-        <li>
-          <span>Income:</span>
-          {results.income}
-        </li>
-      </ul>
+      <table>
+        <tbody>
+          <tr>
+            <td>Year of birth:</td>
+            <td>{results.yearOfBirth}</td>
+          </tr>
+          <tr>
+            <td>Financial Responsibilities:</td>
+            <td>{finRes && 'none'}</td>
+          </tr>
+          <tr>
+            <td>Home Situation:</td>
+            <td>{results.homeSituation}</td>
+          </tr>
+          <tr>
+            <td>Employmeny Status:</td>
+            <td>{results.employmentStatus}</td>
+          </tr>
+          <tr>
+            <td>Income:</td>
+            <td>{results.income}</td>
+          </tr>
+        </tbody>
+      </table>
       <Link exact to="/questionnaire/year-of-birth">
         <button>Back to Questionnaire (edit)</button>
       </Link>

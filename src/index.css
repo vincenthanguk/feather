@@ -70,3 +70,13 @@ li {
 h2 {
   font-size: 1.3rem;
 }
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+td {
+  text-align: left;
+  padding: 10px;
+}
